@@ -1,0 +1,487 @@
+@import 'plugins/bourbon/bourbon';
+@import 'plugins/neat/neat';
+
+@import 'base/variables';
+@import 'base/base-styles';
+@import 'base/mixins';
+@import 'modules/patterns';
+@import 'modules/navigation';
+@import 'modules/comments';
+@import 'modules/badges';
+
+
+iframe {
+	
+	&.loading {
+	    background-image: url("../../img/ring-alt.svg");   
+	    background-repeat: no-repeat;
+	    background-position: 50% 50%; 
+	}
+}
+
+.app {
+  // box-sizing: border-box;	
+  max-width: 100vw;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #17183B;
+  z-index: -999;
+  
+  overflow: scroll;
+  
+  @include media($desktop) {
+  	overflow: hidden;
+  }
+}
+
+.overlay {
+  // box-sizing: border-box;	
+  width: 100vw;
+  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: cover;
+          filter: blur(5px);
+          
+  opacity: .5;
+  z-index: -998;
+}
+
+.overlay-enter {
+  opacity: 0.01;
+}
+
+.overlay-enter.overlay-enter-active {
+  opacity: .4;
+  transition: opacity 1.5s linear .5s;
+}
+
+.container {
+	// overflow: scroll;
+	width: 100%;
+	@include outer-container(99%);
+	
+	
+	@include media($tablet) {
+		@include outer-container(90%);		
+	}
+	
+	@include media($desktop) {
+		@include outer-container(80%);		
+	}	
+}
+
+.container-enter {
+	opacity: 0.01;	
+}
+
+.container-enter.container-enter-active {
+  opacity: .9;
+  transition: opacity 1.5s linear .5s;
+}
+
+
+
+
+
+
+.main-content {
+	
+	padding: $base-spacing;
+	background: transparentize($ghost, .2);
+	border-radius: $base-border-radius;
+	// opacity: 1;
+	
+	@include media($desktop) {
+		min-height: 600px;
+	}
+
+	@include media($desktop-lg) {
+		min-height: 600px;
+	}
+	
+}
+
+.main-content.home {
+	
+	.hero {
+		@include outer-container(100%);
+		
+		background-image: url('../../img/Re-imaginings_s.jpg');		
+		position: relative;
+		padding: $base-spacing / 2;
+		border-radius: $base-border-radius;		
+		background-size: cover;
+		height: 300px;
+		color: $ghost;
+		text-align: center;
+
+		@include media($tablet) {
+			height: 600px;
+			background-image: url('../../img/Re-imaginings_m.jpg');
+		}
+
+		@include media($desktop) {
+			height: 600px;
+			background-image: url('../../img/Re-imaginings_l.jpg');
+		}	
+		
+		@include media($desktop-lg) {
+			height: 700px;
+		}			
+
+		.hero-overlay {
+			position: absolute;
+			left: 0;
+			top: 0;
+			padding: 0;
+			width: 100%;
+			height: 100%;
+			background-size: contain;
+
+          	filter: blur(2px);
+
+			opacity: .15;
+			z-index: 1;
+		}
+		
+		h2 {
+			margin-top: $base-spacing;
+			font-size: $xl-heading / 2;
+			color: lighten($magenta, 38%);
+			text-shadow: 0 5px 15px $ebony;
+			
+			@include media($tablet) {
+				font-size: $xl-heading;				
+			}
+			@include media($desktop) {
+				font-size: $xl-heading;				
+			}						
+			
+		}
+		
+		p {
+			margin-top: $base-spacing * 2;
+			font-size: $base-font-size;
+			text-shadow: 0 3px 2px $ebony;	
+			color: lighten($magenta, 38%);
+
+			@include media($tablet) {
+				margin-top: $base-spacing * 4;
+				font-size: $base-font-size * 1.5;			
+			}
+			@include media($desktop) {
+				margin-top: $base-spacing * 6;
+				font-size: $base-font-size * 1.5;		
+			}				
+		}
+		
+		button {
+			@include button($magenta)
+			position: relative;
+			background: $magenta;
+			z-index: 9999;
+		}
+		
+	}
+
+}
+
+
+/// ABOUT /////
+
+.main-content.about {
+
+	p {
+		margin-bottom: $base-spacing / 2;
+		font-size: 0.9em;
+	}
+	.facts {
+		// float: left;
+		// padding: $base-spacing;	
+	}
+	
+	.picture {
+		@include Border($jumbo, $base-spacing / 2);
+		margin-bottom: $base-spacing / 2;						
+	}
+
+	.picture img {	
+		width: 100%;
+
+	}		
+
+	@include media($tablet) {
+
+		.picture {
+			float: right;
+			width: 45%;
+			margin-left: $base-spacing / 2;
+			margin-bottom: $base-spacing / 2;		
+		}		
+	}
+
+	
+	@include media($desktop) {
+		max-height: calc(100vh - 125px);		
+		p {
+			font-size: $base-font-size;	
+			margin-bottom: $base-spacing;
+		}	
+		
+		.facts {
+			padding-right: $base-spacing;
+		}
+		
+		.picture {
+			width: 45%;
+			float: left;
+			flex: 0 0 50%;
+			padding: $base-spacing / 2;
+			margin-bottom: $base-spacing / 2;
+			margin-right: 2.5%;		
+		}
+		
+		.bio {
+			width: 100%;
+			flex: 0 0 100%;
+		}		
+		padding: $base-spacing * 2;
+	}
+	
+} 
+
+
+
+/// AUDIO
+
+.main-content.audio {
+	max-height: calc(100vh - 122px);
+	overflow: scroll;
+
+	@include media($desktop) {
+		max-height: calc(100vh - 145px);		
+	} 
+
+	@include media($desktop-lg) {
+		max-height: calc(100vh - 95px);		
+	} 	
+
+	h2 {
+		color: $tuatara;
+		font-size: 1.8em;
+		width: 100%;
+		text-align: center;
+		margin-bottom: $base-spacing / 2;
+		
+		@include media($desktop) {
+			font-size: 2.4em;
+		}
+	}
+	
+	h3 {
+		color: $tuatara;		
+	}
+	
+	section {
+
+		margin-bottom: $base-spacing;
+		padding: $base-spacing;
+		border-radius: $base-border-radius;
+		border: solid 1px $base;
+		background: transparentize($jumbo, .8);
+		display: flex;
+		flex-wrap: wrap;
+		
+		p {
+			// color: $vapor;			
+		}
+		
+		@include media($desktop) {
+			flex-wrap: nowrap;	
+		}		
+		
+		iframe {						
+			flex: 1 1 100%;
+			border-radius: $base-border-radius;	 
+		}
+		
+			@include media($desktop) {
+				flex: 1 1 50%; 		
+			}
+		
+		.details {
+			margin-top: $base-spacing;
+			padding-left: $base-spacing / 4;
+			padding-right: $base-spacing / 4;			
+			flex: 1 1 100%;
+			
+			@include media($desktop) {
+				padding-left: $base-spacing;
+				padding-right: 0;
+				margin-top: 0;
+				flex: 1 1 50%; 		
+			}			
+		}
+	}
+} 
+
+
+/// VISUAL 
+
+.main-content.visual { 
+	text-align: center;
+
+	.picture img {	
+		width: 100%;
+
+	}		
+	
+	.picture {
+		max-width: 500px;
+		margin: 0 auto;
+		@include Border($jumbo, $base-spacing / 2);
+		margin-bottom: $base-spacing / 2;
+		
+					
+	}
+	
+} 
+
+
+/// CONTACT ////
+
+.main-content.contact {
+
+	.contact-wrapper {
+		@include outer-container(90%);
+		
+		@include media($desktop) {
+			@include outer-container(70%);	
+		}
+		
+		@include media($desktop-lg) {
+			@include outer-container(60%);	
+		}		
+	}
+	
+	
+	
+	@include media($desktop) {
+		padding-left: $base-spacing * 4;
+		padding-right: $base-spacing * 4;		
+	}
+
+	
+		
+	.social {
+		width: 100%;
+		
+		ul {
+			display: flex;
+			justify-content: center;
+		
+			li {
+				padding: $base-spacing / 4;
+				
+				.fa {
+					transition: background .5s;
+					font-size: 3em;
+					border-radius: 4px;
+					background: $smoke;
+					padding: 5px;
+				}
+				
+				.soundcloud {
+					&:hover {
+						background: $soundcloud-orange;
+						color: $white;
+					}
+				}				
+				
+				.facebook {
+					&:hover {
+						background: $facebook-blue;
+						color: $white;
+					}
+				}
+
+				.twitter {
+					&:hover {
+						background: $twitter-blue;
+						color: $white;	
+					}
+				}	
+				
+				.youtube {
+					&:hover {
+						background: $youtube-red;
+						color: $white;	
+					}
+				}
+				.instagram {
+					&:hover {
+						background: $instagram-purple;
+						color: $white;	
+					}
+				}									
+			}
+		}				
+	}
+
+	h2 {
+		text-align: center;
+	}
+	
+	p {
+		margin-top: $base-spacing * 1;
+		text-align: center;
+		
+	}
+	
+	
+	.mailing-list {
+		
+		// width: 80%;
+		margin: 0 auto;
+		display: flex;
+		flex-wrap: wrap;
+		// align-items: center;
+		justify-content: center;
+
+		
+		h2 {
+			flex: 1 1 100%;
+		}
+		
+		.email-grp, .country-grp {
+			flex: 1 1 100%;
+		}
+		
+		.name-grp {
+			flex: 1 1 45%;			
+		}
+		
+		.name-grp:nth-child(4) {  //First Name
+			margin-right: 5%;
+		}
+		// .mc-field-group:nth-child(2), .mc-field-group:nth-child(3) {
+		// 	flex: 1 1 45%;
+		// }
+		
+		// input  {
+		// 	flex: 1 1 45%;
+		// }
+		
+		input.button {
+			@include button($magenta);
+			display: block;
+		}
+		
+	}
+	
+} 

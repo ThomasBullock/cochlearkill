@@ -1,0 +1,29 @@
+{
+  "name": "cochlear-kill-2017",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "node-sass": "^4.5.1",
+    "react-scripts": "0.9.5"
+  },
+  "dependencies": {
+    "concurrently": "^3.4.0",
+    "history": "^4.6.1",
+    "nodemon": "^1.11.0",
+    "react": "^15.4.2",
+    "react-addons-css-transition-group": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-icons": "^2.2.3",
+    "react-router": "^4.0.0",
+    "react-router-dom": "^4.0.0"
+  },
+  "scripts": {
+    "build-css": "node-sass src/styles/scss -o src/styles/css",
+    "watch-css": "nodemon -e scss -x \"npm run build-css\"",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "start-with-sass": "concurrently --kill-others \"npm run watch-css\" \"npm start\""
+  }
+}

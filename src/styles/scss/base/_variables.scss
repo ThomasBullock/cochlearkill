@@ -1,0 +1,78 @@
+$white         : #FFFFFF !default;
+$ghost         : #FAFAFA !default;
+$snow          : #F9F9F9 !default;
+$vapor         : #F6F6F6 !default;
+$white-smoke   : #F5F5F5 !default;
+$silver        : #EFEFEF !default;
+$smoke         : #EEEEEE !default;
+$gainsboro     : #DDDDDD !default;
+$iron          : #CCCCCC !default;
+$base          : #AAAAAA !default;
+$aluminum      : #999999 !default;
+$jumbo         : #888888 !default;
+$monsoon       : #777777 !default;
+$steel         : #666666 !default;
+$charcoal      : #555555 !default;
+$tuatara       : #444444 !default;
+$oil           : #333333 !default;
+$jet           : #222222 !default;
+$ebony         : #111111 !default;
+$black         : #000000 !default;
+
+$electric-blue-old : #20EBFF;
+$electric-blue : #10DBEF;
+$cold-electric-blue: #083B40;
+$magenta	   : #DB15C5;      
+$golden        : #F5A623;
+$green		   : #7ED321;
+$red           : #D0021B; 
+
+/// social media colors ////
+$facebook-blue     : #3b5998;
+$bandcamp-blue     : #629aa9;
+$twitter-blue      : #1da1f2;
+$skype-blue        : #00aff0;      
+$soundcloud-orange : #ff8800;
+$spotify-green     : #2ebd59;
+$snapchat-yellow   : #fffc00;
+$youtube-red       : #cd201f;
+$tumblr-grey       : #35465c;
+$song-kick         : #f80046;
+
+$instagram-blue    : #405de6;
+$instagram-purple  : #833ab4;
+$instagram-orange  : #fcaf45;
+$instagram-yellow  : #ffdc80;
+
+@import url('https://fonts.googleapis.com/css?family=Anton');
+
+$action-color: #3dc3d1;
+$base-font-size: 1em;
+$base-border-radius: 3px !default;
+$base-line-height: 1.5em !default;
+$base-spacing: 1.5em !default;
+$small-spacing: .75em;
+$action-color: #477dca !default;
+$dark-gray: #333 !default;
+$light-gray: #ddd !default;
+$medium-screen: 40em !default;
+$base-font-color: $dark-gray !default;
+$sans-serif: "Nunito", sans-serif;
+$sans-serif-2: "Varela Round", sans-serif;
+$base-font-family: $sans-serif;
+
+$xl-heading: 3.6em;
+
+$heading: 'Impact', sans-serif;
+
+$base-shadow: 0 2px 1px transparentize($jet, .2);
+$base-border-color: $charcoal;
+$base-background-color: $gainsboro;
+$base-border: solid 1px $monsoon;
+$base-duration: 250ms;
+$base-timing: 50ms;
+
+$desktop-lg: new-breakpoint(min-width 1150px 12);
+$desktop: new-breakpoint(min-width 900px 12);
+$tablet: new-breakpoint(min-width 501px max-width 899px 12);
+$phone: new-breakpoint(min-width 320px max-width 500px 12);

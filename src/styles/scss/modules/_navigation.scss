@@ -1,0 +1,419 @@
+header.navigation {
+  transition: all 2s;
+  $base-border-color: gainsboro !default;
+  $base-border-radius: 3px !default;
+  $action-color: #477DCA !default;
+  $navigation-padding: 1em;
+  $navigation-background: $electric-blue;
+  $navigation-color: transparentize(white, 0.3);
+  $navigation-color-hover: white;
+  $navigation-height: 70px;
+  $navigation-nav-button-background: $action-color;
+  $navigation-nav-button-background-hover: lighten($navigation-background, 10%);
+  $navigation-nav-button-border: 1px solid lighten($navigation-nav-button-background, 20%);
+  $navigation-search-background: transparentize($ghost, 0.2);
+  $navigation-search-border: $jet;
+  $navigation-active-link-color: transparentize(white, 0.5);
+  $navigation-submenu-padding: 1em;
+  $navigation-submenu-width: 12em;
+  $horizontal-bar-mode: $desktop;
+  $search-spacing: $base-spacing / 2;
+
+  background-color: transparentize($navigation-background, .1);
+  border-bottom: 1px solid $ebony;
+  @include texture(180deg, $electric-blue, $electric-blue, 48, 0);
+  
+  @include media($desktop-lg) {
+      border-bottom: 1px solid transparentize($cold-electric-blue, .7);
+  }
+  // min-height: 70px;
+  width: 100%;
+  z-index: 999;
+
+  color: $ghost;
+
+  .navigation-wrapper {
+
+    padding-top: $base-spacing / 2;
+    display: flex;
+    position: relative;
+    z-index: 9999;
+    flex-wrap: wrap;
+    flex-direction: column;
+    
+    @include media ($desktop) {
+      // @include outer-container(90%);
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    
+    @include media ($desktop-lg) {
+      flex-wrap: no-wrap;         
+    }
+  }
+
+  .logo {
+    margin-left: $base-spacing;
+    flex: 0 1 80%;
+    color: $ghost;
+    // float: left;
+    // max-height: $navigation-height;
+    // padding-left: $navigation-padding;
+    // padding-right: 2em;
+    @include media ($desktop) {
+      flex: 1 1 25%;
+    }
+
+  }
+
+  // Mobile view
+
+  .navigation-menu-button {
+    color: $navigation-color;
+    display: inline-block;
+    // float: right;
+    position: absolute;
+    right: 0;
+    top: 0;
+    line-height: $navigation-height;
+    margin: 0;
+    padding-right: 1em;
+    text-decoration: none;
+    text-transform: uppercase;
+    flex: 1 1 20%;
+
+    @include media ($desktop) {
+      display: none;
+    }
+
+    &:focus,
+    &:hover {
+      color: $navigation-color-hover;
+    }
+  }
+
+  // Nav menu
+
+  nav {
+    // float: none;
+    // min-height: $navigation-height;
+    z-index: 9999999;
+    flex: 0 0 100%;
+    display: block;
+
+    @include media ($desktop) {
+      flex: 0 1 45%;
+    }
+  }
+
+  ul.navigation-menu {
+    transition: all .2s; 
+    text-align: center;
+    clear: both;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    overflow: visible;
+    padding: 0;
+    width: 100%;
+    z-index: 9999;
+    height: 0;
+    
+
+    &.show {
+      transition: height .4s; 
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      height: 280px;
+
+    }
+
+    @include media ($desktop) {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-around;
+      margin: 0;
+      padding: 0;
+      height: auto;
+      
+      &.show {
+        flex-direction: row;
+        height: auto;
+                
+      }
+    }
+  }
+
+  ul.navigation-menu.show li.nav-link {
+    border-top: 1px solid darken($electric-blue, 8%);
+    
+    @include media($desktop) {
+      border-top: none;
+    }
+  }
+  // The nav items
+
+  ul li.nav-link {
+    background: $navigation-background;
+    display: block;
+    line-height: $navigation-height;
+    overflow: hidden;
+    width: 100%;
+    z-index: 9999;
+    
+    // &:hover {
+    //   background: darken($navigation-background, 7%);
+    // }
+
+    @include media ($desktop) {
+      border-top: none;
+      background: transparent;
+      display: inline;
+      line-height: $navigation-height;
+      text-decoration: none;
+      width: auto;
+      
+      
+    }
+
+    a {
+      color: $navigation-color;
+      display: inline-block;
+      text-decoration: none;
+
+      @include media ($desktop) {
+        padding-right: 1em;
+      }
+
+      &:focus,
+      &:hover {
+        color: $navigation-color-hover;
+      }
+    }
+  }
+
+  .active-nav-item a {
+    border-bottom: 1px solid $navigation-active-link-color;
+    padding-bottom: 3px;
+  }
+
+  // Sub menus
+
+  li.more.nav-link {
+    padding-right: 0;
+
+    @include media($desktop) {
+      padding-right: $navigation-submenu-padding;
+    }
+
+    > ul > li:first-child a  {
+      padding-top: 1em;
+    }
+
+    a {
+      margin-right: $navigation-submenu-padding;
+    }
+
+    > a {
+      padding-right: 0.6em;
+    }
+
+    > a::after {
+      @include position(absolute, auto -0.4em auto auto);
+      color: $navigation-color;
+      content: "\25BE";
+    }
+  }
+
+  li.more {
+    overflow: visible;
+    padding-right: 0;
+
+    a {
+      padding-right: 0.8em;
+    }
+
+    > a {
+      padding-right: 1.6em;
+      position: relative;
+
+      @include media($desktop) {
+        margin-right: $navigation-submenu-padding;
+      }
+
+      &::after {
+        content: "›";
+        font-size: 1.2em;
+        position: absolute;
+        right: $navigation-submenu-padding / 2;
+      }
+    }
+
+    &:focus > .submenu,
+    &:hover > .submenu {
+      display: block;
+    }
+
+    @include media($desktop) {
+      padding-right: 0.8em;
+      position: relative;
+    }
+  }
+
+  ul.submenu {
+    display: none;
+    padding-left: 0;
+
+    @include media($desktop) {
+      left: -$navigation-submenu-padding;
+      position: absolute;
+      top: 1.5em;
+    }
+
+    .submenu.fly-out-right {
+      @include media($desktop) {
+        left: $navigation-submenu-width - 0.2em;
+        top: 0;
+      }
+    }
+
+    .submenu.fly-out-left {
+      @include media($desktop) {
+        left: -$navigation-submenu-width + 0.2em;
+        top: 0;
+      }
+    }
+
+    .submenu {
+      @include media($desktop) {
+        left: $navigation-submenu-width - 0.2em;
+        top: 0;
+      }
+    }
+
+    li {
+      display: block;
+      padding-right: 0;
+
+      @include media($desktop) {
+        line-height: $navigation-height / 1.3;
+
+        &:first-child > a {
+          border-top-left-radius: $base-border-radius;
+          border-top-right-radius: $base-border-radius;
+        }
+
+        &:last-child > a {
+          border-bottom-left-radius: $base-border-radius;
+          border-bottom-right-radius: $base-border-radius;
+          padding-bottom: 0.7em;
+        }
+      }
+
+      a {
+        background-color: darken($navigation-background, 3%);
+        display: inline-block;
+        text-align: right;
+        width: 100%;
+
+        @include media($desktop) {
+          background-color: $navigation-background;
+          padding-left: $navigation-submenu-padding;
+          text-align: left;
+          width: $navigation-submenu-width;
+        }
+      }
+    }
+  }
+
+  // Elements on the far right
+
+  .navigation-tools {
+    flex: 1 1 100%;
+    background: $cold-electric-blue;
+    // clear: both;
+    // display: block;
+    // height: $navigation-height;
+
+    @include media($desktop) {
+      
+      // clear: none;
+      // float: right;
+      
+      flex: 1 1 80%;
+    }
+    
+    @include media($desktop-lg) {
+      margin-top: $base-spacing / 8;
+      align-self: flex-start;
+      background: transparent;
+      flex: 1 1 25%;    
+    }
+  }
+
+  // Search bar
+
+  .search-bar {
+    $search-bar-border-color: $base-border-color;
+    $search-bar-border: 1px solid $search-bar-border-color;
+    $search-bar-background: $ghost;
+    padding: $search-spacing;
+    width: 100%;
+    margin: 0 auto;
+
+    form {
+      position: relative;
+
+      input[type=search] {
+        background: $navigation-search-background;
+        border: $navigation-search-border;
+        border-radius: $base-border-radius * 2;
+        box-sizing: border-box;
+        color: $navigation-color;
+        font-size: 0.9em;
+        font-style: italic;
+        margin: 0;
+        padding: 0.4em 0.8em;
+        // width: 100%;
+
+        @include media($desktop) {
+          // width: 100%;
+          margin: 0 auto;
+        }
+      }
+
+      button[type=submit] {
+        background: $cold-electric-blue;
+        border: 0;
+        bottom: 0.3em;
+        left: auto;
+        outline: none;
+        padding: 0 9px;
+        position: absolute;
+        right: 0.3em;
+        top: 0.3em;
+
+        img {
+          height: 12px;
+          opacity: 0.7;
+          padding: 1px;
+        }
+      }
+    }
+
+    @include media($desktop) {
+      display: inline-block;
+      position: relative;
+      // width: 90%;
+
+      input {
+        box-sizing: border-box;
+        display: block;
+      }
+    }
+  }
+}
